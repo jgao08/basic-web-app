@@ -17,13 +17,13 @@ export default function QueryProcessor(query: string): string {
     return (x+y).toString();
   }
 
-  // const largestMath = query.match(/Which of the following numbers is the largest: (\d+), (\d+), (\d+)?/);
-  // if (largestMath){
-  //   const answer = Math.max(parseInt(largestMath[0]), Math.max(parseInt(largestMath[1]), parseInt(largestMath[2])))
-  //   return answer.toString();
-  // }
+  const largestMath = query.match(/Which of the following numbers is the largest: (\d+), (\d+), (\d+)/);
+  if (largestMath){
+    const answer = Math.max(parseInt(largestMath[0]), Math.max(parseInt(largestMath[1]), parseInt(largestMath[2])))
+    return answer.toString();
+  }
 
-  const multiply = query.match(/What is (\d+) multiplied by (\d+)?/);
+  const multiply = query.match(/What is (\d+) multiplied by (\d+)/);
   if (multiply){
     const answer = parseInt(multiply[0]) * parseInt(multiply[1])
     return answer.toString();
