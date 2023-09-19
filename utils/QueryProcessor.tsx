@@ -91,6 +91,12 @@ var isPrime = function (num : number) {
     }
   }
 
+  const power = query.match(/What is (\d+) to the power of (\d+)/)
+  if (power){
+    const answer = Math.pow(parseInt(power[1]), parseInt(power[2]))
+    return answer.toString();
+  }
+
 
 
   return "";
