@@ -18,7 +18,7 @@ export default function QueryProcessor(query: string): string {
   }
 
   const minus = query.match(/What is (\d+) minus (\d+)/);
-  if (addMatch) {
+  if (minus) {
     const x: number = parseInt(addMatch[1]);
     const y: number = parseInt(addMatch[2]);
     return (x-y).toString();
