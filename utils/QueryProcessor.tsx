@@ -23,5 +23,11 @@ export default function QueryProcessor(query: string): string {
     return answer.toString();
   }
 
+  const multiply = query.match(/What is (\d+) multiplied by (\d+)?/);
+  if (multiply){
+    const answer = parseInt(multiply[0]) * parseInt(multiply[1])
+    return answer.toString();
+  }
+
   return "";
 }
