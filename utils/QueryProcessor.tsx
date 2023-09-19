@@ -36,6 +36,12 @@ export default function QueryProcessor(query: string): string {
     return answer.toString();
   }
 
+  const divide = query.match(/What is (\d+) divided by (\d+)/);
+  if (divide){
+    const answer = parseInt(divide[1]) / parseInt(divide[2])
+    return answer.toString();
+  }
+
   var isSquare = function (n : number) {
     return n > 0 && Math.sqrt(n) % 1 === 0;
   };
@@ -60,6 +66,13 @@ export default function QueryProcessor(query: string): string {
     return false
 }
 
+var isPrime = function (num : number) {
+  for(let i = 2, s = Math.sqrt(num); i <= s; i++) {
+      if(num % i === 0) return false;
+  }
+  return num > 1;
+}
+
   const squarecube = query.match(/Which of the following numbers is both a square and a cube: (\d+), (\d+), (\d+), (\d+), (\d+), (\d+), (\d+)/)
   if (squarecube){
     for (let i = 0; i < 5; i++){
@@ -68,6 +81,16 @@ export default function QueryProcessor(query: string): string {
       }
     }
   }
+
+  const prime = query.match(/Which of the following numbers are primes: (\d+), (\d+), (\d+), (\d+), (\d+)/)
+  if (prime){
+    for (let i = 0; i < 5; i++){
+      if (isPrime(parseInt(prime[i+1]))){
+        return prime[i+1];
+      }
+    }
+  }
+
 
 
   return "";
