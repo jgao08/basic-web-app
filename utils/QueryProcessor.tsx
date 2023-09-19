@@ -19,13 +19,13 @@ export default function QueryProcessor(query: string): string {
 
   const largestMath = query.match(/Which of the following numbers is the largest: (\d+), (\d+), (\d+)/);
   if (largestMath){
-    const answer = Math.max(parseInt(largestMath[0]), Math.max(parseInt(largestMath[1]), parseInt(largestMath[2])))
+    const answer = Math.max(parseInt(largestMath[1]), Math.max(parseInt(largestMath[2]), parseInt(largestMath[3])))
     return answer.toString();
   }
 
   const multiply = query.match(/What is (\d+) multiplied by (\d+)/);
   if (multiply){
-    const answer = parseInt(multiply[0]) * parseInt(multiply[1])
+    const answer = parseInt(multiply[1]) * parseInt(multiply[2])
     return answer.toString();
   }
 
@@ -40,13 +40,7 @@ export default function QueryProcessor(query: string): string {
     // Iterate from 1-N
     for(let i = 0; i <= N; i++)
     {
-         
-        // Find the cube of
-        // every number
         cube = i * i * i;
- 
-        // Check if cube equals
-        // N or not
         if (cube === N)
         {
             return true
@@ -62,8 +56,8 @@ export default function QueryProcessor(query: string): string {
   const squarecube = query.match(/Which of the following numbers is both a square and a cube: (\d+), (\d+), (\d+), (\d+), (\d+), (\d+), (\d+)/)
   if (squarecube){
     for (let i = 0; i < 5; i++){
-      if (isSquare(parseInt(squarecube[i])) && isCube(parseInt(squarecube[i]))){
-        return squarecube[i];
+      if (isSquare(parseInt(squarecube[i+1])) && isCube(parseInt(squarecube[i+1]))){
+        return squarecube[i+1];
       }
     }
   }
